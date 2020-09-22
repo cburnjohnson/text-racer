@@ -7,9 +7,8 @@ const App = () => {
             <Text style={styles.header}>Text Racer</Text>
             <Button
                 title="Start"
-                color="#841584"
+                color="green"
                 accessibilityLabel="Learn more about this purple button"
-                titleStyle={{ fontSize: 50 }}
             />
         </View>
     );
@@ -19,13 +18,14 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'flex-start'
+        justifyContent: 'flex-start',
+        backgroundColor: 'lightblue'
     },
     header: {
         fontSize: 36,
         textTransform: 'uppercase',
         textAlign: 'center',
-        marginBottom: 180,
+        marginBottom: 200,
         marginTop: 100,
         fontFamily: 'Roboto-Bold'
     }
