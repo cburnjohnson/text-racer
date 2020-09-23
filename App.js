@@ -1,34 +1,26 @@
 import React from 'react';
 import { View, Text, StyleSheet, Button } from 'react-native';
 
+import { NavigationContainer } from '@react-navigation/native';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { createStackNavigator } from '@react-navigation/stack';
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+
+const Drawer = createDrawerNavigator();
+const Stack = createStackNavigator();
+const MaterialBottomTabs = createMaterialBottomTabNavigator();
+const MaterialTopTabs = createMaterialTopTabNavigator();
+
 const App = () => {
     return (
-        <View style={styles.container}>
-            <Text style={styles.header}>Text Racer</Text>
-            <Button
-                title="Start"
-                color="green"
-                accessibilityLabel="Learn more about this purple button"
-            />
-        </View>
+        <NavigationContainer>
+            <Drawer.Navigator>
+                <Drawer.Screen name="Home" />
+                <Drawer.Screen name="Game" />
+            </Drawer.Navigator>
+        </NavigationContainer>
     );
 };
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'flex-start',
-        backgroundColor: 'lightblue'
-    },
-    header: {
-        fontSize: 36,
-        textTransform: 'uppercase',
-        textAlign: 'center',
-        marginBottom: 200,
-        marginTop: 100,
-        fontFamily: 'Roboto-Bold'
-    }
-});
 
 export default App;
