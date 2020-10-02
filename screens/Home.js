@@ -8,13 +8,13 @@ import {
     TouchableOpacity
 } from 'react-native';
 
-export default function Home() {
+export default function Home({ navigation }) {
     return (
         <View style={styles.homeHeader}>
             <Text style={styles.headerText}>Text Racer</Text>
             <TouchableOpacity
                 style={styles.startBtn}
-                onPress={() => Alert.alert('start btn')}
+                onPress={() => navigation.navigate('Game')}
                 underlayColor="#fff"
             >
                 <Text style={styles.startBtnText}>Start</Text>
