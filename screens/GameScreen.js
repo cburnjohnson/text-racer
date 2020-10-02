@@ -9,8 +9,10 @@ export default function GameScreen() {
     return (
         <View style={styles.container}>
             <GameParagraph />
-            <WordsPerMinute />
-            <GameTextInput />
+            <View>
+                <WordsPerMinute />
+                <GameTextInput />
+            </View>
         </View>
     );
 }
@@ -19,6 +21,8 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'space-around'
+        justifyContent: 'space-around',
+        paddingLeft: 20,
+        paddingRight: 20
     }
 });

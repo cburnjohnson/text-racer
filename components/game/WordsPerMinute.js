@@ -3,7 +3,7 @@ import { View, Text, StyleSheet } from 'react-native';
 
 export default function WordsPerMinute() {
     return (
-        <View>
+        <View style={styles.container}>
             <Text>Words Per Minute: </Text>
             <Text>0</Text>
         </View>
@@ -12,8 +12,7 @@ export default function WordsPerMinute() {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        alignItems: 'center',
+        flexDirection: 'row',
         justifyContent: 'center'
     }
 });
