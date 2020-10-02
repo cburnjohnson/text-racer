@@ -8,23 +8,31 @@ import {
     TouchableOpacity
 } from 'react-native';
 
-export default function Home({ navigation }) {
+export default function HomeScreen({ navigation }) {
     return (
-        <View style={styles.homeHeader}>
-            <Text style={styles.headerText}>Text Racer</Text>
-            <TouchableOpacity
-                style={styles.startBtn}
-                onPress={() => navigation.navigate('Game')}
-                underlayColor="#fff"
-            >
-                <Text style={styles.startBtnText}>Start</Text>
-            </TouchableOpacity>
+        <View style={styles.container}>
+            <View style={styles.homeFlex}>
+                <Text style={styles.headerText}>Text Racer</Text>
+                <TouchableOpacity
+                    style={styles.startBtn}
+                    onPress={() => navigation.navigate('Game')}
+                    underlayColor="#fff"
+                >
+                    <Text style={styles.startBtnText}>Start</Text>
+                </TouchableOpacity>
+            </View>
         </View>
     );
 }
 
 const styles = StyleSheet.create({
-    homeHeader: {
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'flex-start'
+    },
+    homeFlex: {
         flex: 1,
         justifyContent: 'space-around'
     },
