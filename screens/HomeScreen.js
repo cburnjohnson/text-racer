@@ -15,7 +15,7 @@ export default function HomeScreen({ navigation }) {
                 <Text style={styles.headerText}>Text Racer</Text>
                 <TouchableOpacity
                     style={styles.startBtn}
-                    onPress={() => navigation.navigate('Game')}
+                    onPress={() => navigation.navigate('Text Racer')}
                     underlayColor="#fff"
                 >
                     <Text style={styles.startBtnText}>Start</Text>
