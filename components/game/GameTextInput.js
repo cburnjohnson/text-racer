@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, TextInput, StyleSheet } from 'react-native';
 
 export default function GameTextInput({
@@ -8,6 +8,26 @@ export default function GameTextInput({
     textMatch,
     setTextMatch
 }) {
+    useEffect(() => {
+        inputValueArr = inputValue.split(' ');
+        for (let i = 0; i < inputValueArr.length; i++) {
+            console.log(i);
+            console.log(inputValueArr[i]);
+            console.log(gameTextArr[i]);
+            if (inputValueArr[i] === gameTextArr[i]) {
+                setTextMatch(true);
+            } else if (
+                inputValueArr[i] !== gameTextArr[i] &&
+                inputValueArr[i] !== ''
+            ) {
+                setTextMatch(false);
+            }
+        }
+    }, [inputValue]);
+
+    let inputValueArr;
+    let gameTextArr = gameText.split(' ');
+
     return (
         <View>
             <TextInput
@@ -22,6 +42,7 @@ export default function GameTextInput({
                 }
                 onChangeText={(text) => setInputValue(text)}
                 value={inputValue}
+                placeholder={'Type here...'}
             />
         </View>
     );

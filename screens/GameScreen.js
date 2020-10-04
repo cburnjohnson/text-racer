@@ -7,7 +7,7 @@ import WordsPerMinute from '../components/game/WordsPerMinute';
 
 export default function GameScreen() {
     const [gameText, setGameText] = useState('Random text');
-    const [inputValue, setInputValue] = useState('Type Here...');
+    const [inputValue, setInputValue] = useState('');
     const [textMatch, setTextMatch] = useState(null);
 
     return (
