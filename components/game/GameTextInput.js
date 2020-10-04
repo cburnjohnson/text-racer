@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
 import { View, TextInput, StyleSheet } from 'react-native';
 
-export default function GameTextInput() {
-    const [value, onChangeText] = React.useState('Type Here...');
-
+export default function GameTextInput({ inputValue, setInputValue }) {
     return (
         <View>
             <TextInput
                 style={styles.textInput}
-                onChangeText={(text) => onChangeText(text)}
-                value={value}
+                onChangeText={(text) => setInputValue(text)}
+                value={inputValue}
             />
         </View>
     );

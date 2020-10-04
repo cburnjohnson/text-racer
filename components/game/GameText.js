@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-export default function GameText() {
+export default function GameText({ gameText }) {
     return (
         <View>
-            <Text></Text>
+            <Text>{gameText}</Text>
         </View>
     );
 }

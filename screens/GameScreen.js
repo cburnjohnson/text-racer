@@ -6,14 +6,18 @@ import GameText from '../components/game/GameText';
 import WordsPerMinute from '../components/game/WordsPerMinute';
 
 export default function GameScreen() {
-    const [text, setText] = useState('Random text');
+    const [gameText, setGameText] = useState('Random text');
+    const [inputValue, setInputValue] = useState('Type Here...');
 
     return (
         <View style={styles.container}>
-            <GameText />
+            <GameText gameText={gameText} />
             <View>
                 <WordsPerMinute />
-                <GameTextInput />
+                <GameTextInput
+                    setInputValue={setInputValue}
+                    inputValue={inputValue}
+                />
             </View>
         </View>
     );
