@@ -9,12 +9,21 @@ export default function GameScreen() {
     const [gameText, setGameText] = useState('Random text');
     const [inputValue, setInputValue] = useState('');
     const [textMatch, setTextMatch] = useState(null);
+    const [time, setTime] = useState(0);
+    const [gameStatus, setGameStatus] = useState(true);
+
+    if (gameStatus) {
+        setTimeout(() => {
+            setTime(time + 1);
+        }, 1000);
+    }
 
     return (
         <View style={styles.container}>
             <GameText gameText={gameText} textMatch={textMatch} />
             <View>
-                <WordsPerMinute />
+                <Text style={{ textAlign: 'center' }}>Time: {time}</Text>
+                <WordsPerMinute inputValue={inputValue} time={time} />
                 <GameTextInput
                     gameText={gameText}
                     setInputValue={setInputValue}
