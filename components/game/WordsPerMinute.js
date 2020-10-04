@@ -6,7 +6,11 @@ export default function WordsPerMinute({ inputValue, time }) {
 
     useEffect(() => {
         inputValueLength = inputValue.split(' ').length;
-        setWpm(Math.round(inputValueLength / 60));
+        if (inputValue === '') {
+            setWpm(inputValueLength - 1);
+        } else {
+            setWpm(inputValueLength);
+        }
     }, [time]);
 
     let inputValueLength;
