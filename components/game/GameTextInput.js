@@ -8,25 +8,24 @@ export default function GameTextInput({
     textMatch,
     setTextMatch
 }) {
+    // after space check the last word
     useEffect(() => {
-        inputValueArr = inputValue.split(' ');
-        for (let i = 0; i < inputValueArr.length; i++) {
-            console.log(i);
-            console.log(inputValueArr[i]);
-            console.log(gameTextArr[i]);
-            if (inputValueArr[i] === gameTextArr[i]) {
-                setTextMatch(true);
-            } else if (
-                inputValueArr[i] !== gameTextArr[i] &&
-                inputValueArr[i] !== ''
-            ) {
-                setTextMatch(false);
-            }
+        inputValueLength = inputValue.split('').length;
+
+        let currentGameText = gameText.substring(0, inputValueLength);
+
+        if (currentGameText === inputValue) {
+            setTextMatch(true);
+        } else {
+            setTextMatch(false);
+        }
+
+        if (inputValue === '') {
+            setTextMatch(null);
         }
     }, [inputValue]);
 
-    let inputValueArr;
-    let gameTextArr = gameText.split(' ');
+    let inputValueLength;
 
     return (
         <View>

@@ -1,10 +1,34 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
-export default function GameText({ gameText }) {
+export default function GameText({ gameText, textMatch }) {
     return (
         <View>
-            <Text>{gameText}</Text>
+            <Text
+                style={
+                    textMatch === null
+                        ? styles.text
+                        : textMatch === true
+                        ? styles.textMatch
+                        : textMatch === false
+                        ? styles.textNoMatch
+                        : styles.textInput
+                }
+            >
+                {gameText}
+            </Text>
         </View>
     );
 }
+
+const styles = StyleSheet.create({
+    text: {
+        color: 'black'
+    },
+    textMatch: {
+        color: 'green'
+    },
+    textNoMatch: {
+        color: 'red'
+    }
+});

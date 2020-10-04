@@ -12,7 +12,7 @@ export default function GameScreen() {
 
     return (
         <View style={styles.container}>
-            <GameText gameText={gameText} />
+            <GameText gameText={gameText} textMatch={textMatch} />
             <View>
                 <WordsPerMinute />
                 <GameTextInput
