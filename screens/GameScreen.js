@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
 import GameTextInput from '../components/game/GameTextInput';
-import GameParagraph from '../components/game/GameParagraph';
+import GameText from '../components/game/GameText';
 import WordsPerMinute from '../components/game/WordsPerMinute';
 
 export default function GameScreen() {
+    const [text, setText] = useState('Random text');
+
     return (
         <View style={styles.container}>
-            <GameParagraph />
+            <GameText />
             <View>
                 <WordsPerMinute />
                 <GameTextInput />
