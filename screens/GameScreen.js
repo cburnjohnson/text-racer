@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, KeyboardAvoidingView } from 'react-native';
 
 import GameTextInput from '../components/game/GameTextInput';
 import GameText from '../components/game/GameText';
@@ -25,7 +25,11 @@ export default function GameScreen({ navigation }) {
     return (
         <View style={styles.container}>
             <GameText gameText={gameText} textMatch={textMatch} />
-            <View>
+            <KeyboardAvoidingView
+                behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
+                keyboardVerticalOffset={Platform.OS == 'ios' ? 180 : 20}
+                enabled={Platform.OS === 'ios' ? true : false}
+            >
                 <Text style={{ textAlign: 'center' }}>Time: {time}</Text>
                 <WordsPerMinute inputValue={inputValue} time={time} />
                 <GameTextInput
@@ -36,7 +40,7 @@ export default function GameScreen({ navigation }) {
                     setTextMatch={setTextMatch}
                     setGameStatus={setGameStatus}
                 />
-            </View>
+            </KeyboardAvoidingView>
         </View>
     );
 }
