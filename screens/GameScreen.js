@@ -13,14 +13,16 @@ export default function GameScreen({ navigation }) {
     const [gameStatus, setGameStatus] = useState(true);
 
     useEffect(() => {
-        if (gameStatus) {
-            setTimeout(() => {
-                setTime(time + 1);
-            }, 1000);
-        } else if (gameStatus === false) {
+        if (gameStatus === false) {
             navigation.navigate('Results');
         }
     }, [gameStatus]);
+
+    if (gameStatus) {
+        setTimeout(() => {
+            setTime(time + 1);
+        }, 1000);
+    }
 
     return (
         <View style={styles.container}>
