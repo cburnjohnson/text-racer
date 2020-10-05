@@ -1,22 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
 import GameTextInput from '../components/game/GameTextInput';
 import GameText from '../components/game/GameText';
 import WordsPerMinute from '../components/game/WordsPerMinute';
 
-export default function GameScreen() {
+export default function GameScreen({ navigation }) {
     const [gameText, setGameText] = useState('Random text');
     const [inputValue, setInputValue] = useState('');
     const [textMatch, setTextMatch] = useState(null);
     const [time, setTime] = useState(0);
     const [gameStatus, setGameStatus] = useState(true);
 
-    if (gameStatus) {
-        setTimeout(() => {
-            setTime(time + 1);
-        }, 1000);
-    }
+    useEffect(() => {
+        if (gameStatus) {
+            setTimeout(() => {
+                setTime(time + 1);
+            }, 1000);
+        } else if (gameStatus === false) {
+            navigation.navigate('Results');
+        }
+    }, [gameStatus]);
 
     return (
         <View style={styles.container}>
@@ -30,6 +34,7 @@ export default function GameScreen() {
                     inputValue={inputValue}
                     textMatch={textMatch}
                     setTextMatch={setTextMatch}
+                    setGameStatus={setGameStatus}
                 />
             </View>
         </View>

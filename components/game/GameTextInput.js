@@ -6,12 +6,16 @@ export default function GameTextInput({
     setInputValue,
     gameText,
     textMatch,
-    setTextMatch
+    setTextMatch,
+    setGameStatus
 }) {
     // after space check the last word
     useEffect(() => {
-        inputValueLength = inputValue.split('').length;
+        if (inputValue === gameText) {
+            setGameStatus(false);
+        }
 
+        inputValueLength = inputValue.split('').length;
         let currentGameText = gameText.substring(0, inputValueLength);
 
         if (currentGameText === inputValue) {
