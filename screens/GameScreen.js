@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { View, Text, StyleSheet, KeyboardAvoidingView } from 'react-native';
 
 import GameTextInput from '../components/game/GameTextInput';
@@ -6,16 +6,26 @@ import GameText from '../components/game/GameText';
 import WordsPerMinute from '../components/game/WordsPerMinute';
 
 export default function GameScreen({ navigation }) {
-    const [gameText, setGameText] = useState('Random text');
+    const [gameText, setGameText] = useState('Waiting for text...');
     const [inputValue, setInputValue] = useState('');
     const [textMatch, setTextMatch] = useState(null);
     const [time, setTime] = useState(0);
     const [gameStatus, setGameStatus] = useState(true);
 
+    const fetchText = useCallback(async () => {
+        const req = await fetch(
+            'https://uselessfacts.jsph.pl/random.json?language=en'
+        );
+        const res = await req.json();
+        setGameText(res.text);
+    });
+
     useEffect(() => {
         if (gameStatus === false) {
             navigation.navigate('Results');
         }
+
+        fetchText();
     }, [gameStatus]);
 
     if (gameStatus) {
