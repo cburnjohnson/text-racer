@@ -6,7 +6,7 @@ import GameText from '../components/game/GameText';
 import WordsPerMinute from '../components/game/WordsPerMinute';
 
 export default function GameScreen({ navigation }) {
-    const [gameText, setGameText] = useState('Waiting for text...');
+    const [gameText, setGameText] = useState('Test');
     const [inputValue, setInputValue] = useState('');
     const [textMatch, setTextMatch] = useState(null);
     const [time, setTime] = useState(0);
@@ -25,7 +25,7 @@ export default function GameScreen({ navigation }) {
             navigation.navigate('Results');
         }
 
-        fetchText();
+        // fetchText();
     }, [gameStatus]);
 
     if (gameStatus) {
@@ -63,6 +63,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-around',
         paddingLeft: 20,
-        paddingRight: 20
-    }
+        paddingRight: 20,
+    },
 });
