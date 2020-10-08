@@ -4,6 +4,7 @@ import { View, Text, StyleSheet, KeyboardAvoidingView } from 'react-native';
 import GameTextInput from '../components/game/GameTextInput';
 import GameText from '../components/game/GameText';
 import WordsPerMinute from '../components/game/WordsPerMinute';
+import ResultsModal from '../components/game/ResultsModal';
 
 export default function GameScreen({ navigation }) {
     const [gameText, setGameText] = useState('Test');
@@ -11,6 +12,7 @@ export default function GameScreen({ navigation }) {
     const [textMatch, setTextMatch] = useState(null);
     const [time, setTime] = useState(0);
     const [gameStatus, setGameStatus] = useState(true);
+    const [modalVisible, setModalVisible] = useState(true);
 
     const fetchText = useCallback(async () => {
         const req = await fetch(
@@ -36,6 +38,7 @@ export default function GameScreen({ navigation }) {
 
     return (
         <View style={styles.container}>
+            <ResultsModal modalVisible={modalVisible} />
             <GameText gameText={gameText} textMatch={textMatch} />
             <KeyboardAvoidingView
                 behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
