@@ -12,7 +12,8 @@ export default function GameScreen({ navigation }) {
     const [textMatch, setTextMatch] = useState(null);
     const [time, setTime] = useState(0);
     const [gameStatus, setGameStatus] = useState(true);
-    const [modalVisible, setModalVisible] = useState(true);
+    const [wpm, setWpm] = useState(0);
+    const [modalVisible, setModalVisible] = useState(false);
 
     const fetchText = useCallback(async () => {
         const req = await fetch(
@@ -24,7 +25,7 @@ export default function GameScreen({ navigation }) {
 
     useEffect(() => {
         if (gameStatus === false) {
-            navigation.navigate('Results');
+            setModalVisible(true);
         }
 
         // fetchText();
@@ -39,8 +40,9 @@ export default function GameScreen({ navigation }) {
     return (
         <View style={styles.container}>
             <ResultsModal
+                wpm={wpm}
                 modalVisible={modalVisible}
-                setModalVisible={setModalVisible}
+                setModalVisible={modalVisible}
             />
             <GameText gameText={gameText} textMatch={textMatch} />
             <KeyboardAvoidingView
@@ -49,7 +51,12 @@ export default function GameScreen({ navigation }) {
                 enabled={Platform.OS === 'ios' ? true : false}
             >
                 <Text style={{ textAlign: 'center' }}>Time: {time}</Text>
-                <WordsPerMinute inputValue={inputValue} time={time} />
+                <WordsPerMinute
+                    inputValue={inputValue}
+                    time={time}
+                    wpm={wpm}
+                    setWpm={setWpm}
+                />
                 <GameTextInput
                     gameText={gameText}
                     setInputValue={setInputValue}

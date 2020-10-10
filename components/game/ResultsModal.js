@@ -8,8 +8,7 @@ import {
     View,
 } from 'react-native';
 
-const ResultsModal = () => {
-    const [modalVisible, setModalVisible] = useState(true);
+const ResultsModal = ({ wpm, modalVisible, setModalVisible }) => {
     return (
         <View style={styles.centeredView}>
             <Modal
@@ -22,7 +21,11 @@ const ResultsModal = () => {
             >
                 <View style={styles.centeredView}>
                     <View style={styles.modalView}>
-                        <Text style={styles.modalText}>Hello World!</Text>
+                        <Text style={styles.modalTextHeader}>Results</Text>
+
+                        <View>
+                            <Text>Words Per Minute: {wpm}</Text>
+                        </View>
 
                         <TouchableHighlight
                             style={{
@@ -33,7 +36,7 @@ const ResultsModal = () => {
                                 setModalVisible(!modalVisible);
                             }}
                         >
-                            <Text style={styles.textStyle}>Hide Modal</Text>
+                            <Text style={styles.playBtn}>Play Again</Text>
                         </TouchableHighlight>
                     </View>
                 </View>
@@ -65,12 +68,18 @@ const styles = StyleSheet.create({
         shadowRadius: 3.84,
         elevation: 5,
     },
-    textStyle: {
+    openButton: {
+        backgroundColor: '#F194FF',
+        borderRadius: 20,
+        padding: 10,
+        elevation: 2,
+    },
+    playBtn: {
         color: 'white',
         fontWeight: 'bold',
         textAlign: 'center',
     },
-    modalText: {
+    modalTextHeader: {
         marginBottom: 15,
         textAlign: 'center',
     },

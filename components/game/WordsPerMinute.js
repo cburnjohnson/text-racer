@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-export default function WordsPerMinute({ inputValue, time }) {
-    const [wpm, setWpm] = useState(0);
-
+export default function WordsPerMinute({ inputValue, time, wpm, setWpm }) {
     useEffect(() => {
         inputValueLength = inputValue.split(' ').length;
         if (inputValue === '') {
@@ -26,6 +24,6 @@ export default function WordsPerMinute({ inputValue, time }) {
 const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
-        justifyContent: 'center'
-    }
+        justifyContent: 'center',
+    },
 });
