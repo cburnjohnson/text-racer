@@ -23,6 +23,14 @@ export default function GameScreen({ navigation }) {
         setGameText(res.text);
     });
 
+    const resetGame = () => {
+        setGameStatus(true);
+        setModalVisible(false);
+        setInputValue('');
+        setWpm(0);
+        setTime(0);
+    };
+
     useEffect(() => {
         if (gameStatus === false) {
             setModalVisible(true);
@@ -31,10 +39,13 @@ export default function GameScreen({ navigation }) {
         // fetchText();
     }, [gameStatus]);
 
+    let timer;
     if (gameStatus) {
-        setTimeout(() => {
-            setTime(time + 1);
-        }, 1000);
+        timer = setTimeout(function () {
+            setTime(time + 0.1);
+        }, 100);
+    } else {
+        clearTimeout(timer);
     }
 
     return (
@@ -42,8 +53,8 @@ export default function GameScreen({ navigation }) {
             <ResultsModal
                 wpm={wpm}
                 modalVisible={modalVisible}
-                setModalVisible={modalVisible}
                 time={time}
+                resetGame={resetGame}
             />
             <GameText gameText={gameText} textMatch={textMatch} />
             <KeyboardAvoidingView

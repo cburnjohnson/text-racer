@@ -8,7 +8,7 @@ import {
     View,
 } from 'react-native';
 
-const ResultsModal = ({ wpm, modalVisible, setModalVisible, time }) => {
+const ResultsModal = ({ wpm, modalVisible, time, resetGame }) => {
     return (
         <View style={styles.centeredView}>
             <Modal
@@ -34,7 +34,7 @@ const ResultsModal = ({ wpm, modalVisible, setModalVisible, time }) => {
                                 backgroundColor: '#2196F3',
                             }}
                             onPress={() => {
-                                setModalVisible(!modalVisible);
+                                resetGame();
                             }}
                         >
                             <Text style={styles.playBtn}>Play Again</Text>
