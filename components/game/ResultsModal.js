@@ -8,7 +8,7 @@ import {
     View,
 } from 'react-native';
 
-const ResultsModal = ({ wpm, modalVisible, setModalVisible }) => {
+const ResultsModal = ({ wpm, modalVisible, setModalVisible, time }) => {
     return (
         <View style={styles.centeredView}>
             <Modal
@@ -24,6 +24,7 @@ const ResultsModal = ({ wpm, modalVisible, setModalVisible }) => {
                         <Text style={styles.modalTextHeader}>Results</Text>
 
                         <View>
+                            <Text>Time: {time} seconds</Text>
                             <Text>Words Per Minute: {wpm}</Text>
                         </View>
 

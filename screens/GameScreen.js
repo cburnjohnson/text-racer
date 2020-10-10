@@ -43,6 +43,7 @@ export default function GameScreen({ navigation }) {
                 wpm={wpm}
                 modalVisible={modalVisible}
                 setModalVisible={modalVisible}
+                time={time}
             />
             <GameText gameText={gameText} textMatch={textMatch} />
             <KeyboardAvoidingView
