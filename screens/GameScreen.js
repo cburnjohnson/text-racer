@@ -38,7 +38,10 @@ export default function GameScreen({ navigation }) {
 
     return (
         <View style={styles.container}>
-            <ResultsModal modalVisible={modalVisible} />
+            <ResultsModal
+                modalVisible={modalVisible}
+                setModalVisible={setModalVisible}
+            />
             <GameText gameText={gameText} textMatch={textMatch} />
             <KeyboardAvoidingView
                 behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
