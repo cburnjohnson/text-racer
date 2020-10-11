@@ -3,15 +3,15 @@ import { View, Text, StyleSheet } from 'react-native';
 
 export default function WordsPerMinute({ inputValue, time, wpm, setWpm }) {
     useEffect(() => {
-        inputValueLength = inputValue.split(' ').length;
-        if (inputValue === '') {
-            setWpm(0);
-        } else {
-            setWpm(Math.round((inputValueLength * 60) / time));
-        }
+        setWpm(calculateWpm());
     }, [time]);
 
-    let inputValueLength;
+
+    const calculateWpm = () => {
+       const inputValueLength = inputValue.split('').length;
+       const currentWpm = (inputValueLength/5) / 60;
+       return currentWpm;
+    }
 
     return (
         <View style={styles.container}>
