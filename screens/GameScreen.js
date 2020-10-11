@@ -31,23 +31,25 @@ export default function GameScreen({ navigation }) {
         setTime(0);
     };
 
+    let timer;
+    const startGame = () => {
+        timer = setInterval(() => setTime(time => time + 1), 1000)
+    }
+
+
     useEffect(() => {
         if (gameStatus === false) {
             setModalVisible(true);
+        } else {
+            startGame();
         }
-
+        return () => {
+            clearInterval(timer);
+        }
         // fetchText();
     }, [gameStatus]);
 
-    let timer;
-    if (gameStatus) {
-        timer = setTimeout(function () {
-            setTime(time + 0.1);
-        }, 100);
-    } else {
-        clearTimeout(timer);
-    }
-
+   
     return (
         <View style={styles.container}>
             <ResultsModal

@@ -7,8 +7,7 @@ export default function WordsPerMinute({ inputValue, time, wpm, setWpm }) {
         if (inputValue === '') {
             setWpm(0);
         } else {
-            let currentWpm = Math.round((inputValueLength * 60) / time);
-            setWpm(currentWpm.slice(2));
+            setWpm(Math.round((inputValueLength * 60) / time));
         }
     }, [time]);
 
