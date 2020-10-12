@@ -1,5 +1,7 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useContext } from 'react';
 import { View, Text, StyleSheet, KeyboardAvoidingView } from 'react-native';
+
+import gameContext from '../context/game/gameContext';
 
 import GameTextInput from '../components/game/GameTextInput';
 import GameText from '../components/game/GameText';
@@ -10,10 +12,11 @@ export default function GameScreen({ navigation }) {
     const [gameText, setGameText] = useState('Test');
     const [inputValue, setInputValue] = useState('');
     const [textMatch, setTextMatch] = useState(null);
-    const [time, setTime] = useState(0);
     const [gameStatus, setGameStatus] = useState(true);
     const [wpm, setWpm] = useState(0);
     const [modalVisible, setModalVisible] = useState(false);
+
+    const { counter, startGame } = useContext(gameContext);
 
     const fetchText = useCallback(async () => {
         const req = await fetch(
@@ -28,14 +31,8 @@ export default function GameScreen({ navigation }) {
         setModalVisible(false);
         setInputValue('');
         setWpm(0);
-        setTime(0);
+        // setTime(0);
     };
-
-    let timer;
-    const startGame = () => {
-        timer = setInterval(() => setTime(time => time + 1), 1000)
-    }
-
 
     useEffect(() => {
         if (gameStatus === false) {
@@ -44,18 +41,16 @@ export default function GameScreen({ navigation }) {
             startGame();
         }
         return () => {
-            clearInterval(timer);
-        }
+            // clearInterval(timer);
+        };
         // fetchText();
     }, [gameStatus]);
 
-   
     return (
         <View style={styles.container}>
             <ResultsModal
                 wpm={wpm}
                 modalVisible={modalVisible}
-                time={time}
                 resetGame={resetGame}
             />
             <GameText gameText={gameText} textMatch={textMatch} />
@@ -64,10 +59,9 @@ export default function GameScreen({ navigation }) {
                 keyboardVerticalOffset={Platform.OS == 'ios' ? 180 : 20}
                 enabled={Platform.OS === 'ios' ? true : false}
             >
-                <Text style={{ textAlign: 'center' }}>Time: {time}</Text>
+                <Text style={{ textAlign: 'center' }}>Time: {counter}</Text>
                 <WordsPerMinute
                     inputValue={inputValue}
-                    time={time}
                     wpm={wpm}
                     setWpm={setWpm}
                 />
@@ -90,6 +84,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-around',
         paddingLeft: 20,
-        paddingRight: 20,
-    },
+        paddingRight: 20
+    }
 });
