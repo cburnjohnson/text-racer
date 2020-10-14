@@ -8,6 +8,7 @@ const GameState = (props) => {
     const initialState = {
         text: 'Test',
         inputValue: '',
+        textMatch: null,
         counter: 0
     };
 
@@ -31,6 +32,7 @@ const GameState = (props) => {
                 text: state.text,
                 counter: state.counter,
                 inputValue: state.inputValue,
+                textMatch: state.textMatch,
                 startGame,
                 incrementGameCounter,
                 setInputValue
