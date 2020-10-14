@@ -5,10 +5,10 @@ import {
     StyleSheet,
     Text,
     TouchableHighlight,
-    View,
+    View
 } from 'react-native';
 
-const ResultsModal = ({ wpm, modalVisible, time, resetGame }) => {
+const ResultsModal = ({ wpm, modalVisible, counter, resetGame }) => {
     return (
         <View style={styles.centeredView}>
             <Modal
@@ -24,14 +24,14 @@ const ResultsModal = ({ wpm, modalVisible, time, resetGame }) => {
                         <Text style={styles.modalTextHeader}>Results</Text>
 
                         <View>
-                            <Text>Time: {time} seconds</Text>
+                            <Text>Time: {counter} seconds</Text>
                             <Text>Words Per Minute: {wpm}</Text>
                         </View>
 
                         <TouchableHighlight
                             style={{
                                 ...styles.openButton,
-                                backgroundColor: '#2196F3',
+                                backgroundColor: '#2196F3'
                             }}
                             onPress={() => {
                                 resetGame();
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
         left: 0,
         bottom: 0,
         right: 0,
-        alignItems: 'center',
+        alignItems: 'center'
     },
     modalView: {
         backgroundColor: 'white',
@@ -63,27 +63,27 @@ const styles = StyleSheet.create({
         shadowColor: '#000',
         shadowOffset: {
             width: 0,
-            height: 2,
+            height: 2
         },
         shadowOpacity: 0.25,
         shadowRadius: 3.84,
-        elevation: 5,
+        elevation: 5
     },
     openButton: {
         backgroundColor: '#F194FF',
         borderRadius: 20,
         padding: 10,
-        elevation: 2,
+        elevation: 2
     },
     playBtn: {
         color: 'white',
         fontWeight: 'bold',
-        textAlign: 'center',
+        textAlign: 'center'
     },
     modalTextHeader: {
         marginBottom: 15,
-        textAlign: 'center',
-    },
+        textAlign: 'center'
+    }
 });
 
 export default ResultsModal;

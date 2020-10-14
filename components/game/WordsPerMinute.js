@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-export default function WordsPerMinute({ inputValue, time, wpm, setWpm }) {
+export default function WordsPerMinute({ inputValue, counter, wpm, setWpm }) {
     useEffect(() => {
         setWpm(calculateWpm());
-    }, [time]);
-
+    }, [counter]);
 
     const calculateWpm = () => {
-       const inputValueLength = inputValue.split('').length;
-       const currentWpm = (inputValueLength/5) / 60;
-       return currentWpm;
-    }
+        const inputValueLength = inputValue.split('').length;
+        const currentWpm = inputValueLength / 5 / 60;
+        return currentWpm;
+    };
 
     return (
         <View style={styles.container}>
@@ -24,6 +23,6 @@ export default function WordsPerMinute({ inputValue, time, wpm, setWpm }) {
 const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
-        justifyContent: 'center',
-    },
+        justifyContent: 'center'
+    }
 });

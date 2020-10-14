@@ -16,7 +16,9 @@ export default function GameScreen({ navigation }) {
     const [wpm, setWpm] = useState(0);
     const [modalVisible, setModalVisible] = useState(false);
 
-    const { counter, startGame } = useContext(gameContext);
+    const { counter, startGame, incrementGameCounter } = useContext(
+        gameContext
+    );
 
     const fetchText = useCallback(async () => {
         const req = await fetch(
@@ -31,17 +33,18 @@ export default function GameScreen({ navigation }) {
         setModalVisible(false);
         setInputValue('');
         setWpm(0);
-        // setTime(0);
     };
 
     useEffect(() => {
+        let gameCounter;
         if (gameStatus === false) {
             setModalVisible(true);
         } else {
             startGame();
+            gameCounter = setInterval(() => incrementGameCounter(), 1000);
         }
         return () => {
-            // clearInterval(timer);
+            clearInterval(gameCounter);
         };
         // fetchText();
     }, [gameStatus]);
@@ -52,6 +55,7 @@ export default function GameScreen({ navigation }) {
                 wpm={wpm}
                 modalVisible={modalVisible}
                 resetGame={resetGame}
+                counter={counter}
             />
             <GameText gameText={gameText} textMatch={textMatch} />
             <KeyboardAvoidingView
@@ -64,6 +68,7 @@ export default function GameScreen({ navigation }) {
                     inputValue={inputValue}
                     wpm={wpm}
                     setWpm={setWpm}
+                    counter={counter}
                 />
                 <GameTextInput
                     gameText={gameText}

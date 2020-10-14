@@ -2,7 +2,7 @@ import React, { useReducer } from 'react';
 import GameContext from './gameContext';
 import gameReducer from './gameReducer';
 
-import { INCREMENT_COUNTER, START_GAME } from '../types';
+import { INCREMENT_GAME_COUNTER, START_GAME } from '../types';
 
 const GameState = (props) => {
     const initialState = {
@@ -12,17 +12,17 @@ const GameState = (props) => {
     const [state, dispatch] = useReducer(gameReducer, initialState);
 
     const startGame = () => {
-        setInterval(function () {
-            incrementCounter();
-        }, 1000);
+        dispatch({ type: START_GAME });
     };
 
-    const incrementCounter = () => {
-        dispatch({ type: INCREMENT_COUNTER });
+    const incrementGameCounter = () => {
+        dispatch({ type: INCREMENT_GAME_COUNTER });
     };
 
     return (
-        <GameContext.Provider value={{ counter: state.counter, startGame }}>
+        <GameContext.Provider
+            value={{ counter: state.counter, startGame, incrementGameCounter }}
+        >
             {props.children}
         </GameContext.Provider>
     );
