@@ -6,6 +6,7 @@ import { INCREMENT_GAME_COUNTER, START_GAME } from '../types';
 
 const GameState = (props) => {
     const initialState = {
+        text: 'Test',
         counter: 0
     };
 
@@ -21,7 +22,12 @@ const GameState = (props) => {
 
     return (
         <GameContext.Provider
-            value={{ counter: state.counter, startGame, incrementGameCounter }}
+            value={{
+                text: state.text,
+                counter: state.counter,
+                startGame,
+                incrementGameCounter
+            }}
         >
             {props.children}
         </GameContext.Provider>

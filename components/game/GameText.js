@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-export default function GameText({ gameText, textMatch }) {
+export default function GameText({ text, textMatch }) {
     return (
         <View>
             <Text
@@ -15,7 +15,7 @@ export default function GameText({ gameText, textMatch }) {
                         : styles.textInput
                 }
             >
-                {gameText}
+                {text}
             </Text>
         </View>
     );

@@ -9,14 +9,13 @@ import WordsPerMinute from '../components/game/WordsPerMinute';
 import ResultsModal from '../components/game/ResultsModal';
 
 export default function GameScreen({ navigation }) {
-    const [gameText, setGameText] = useState('Test');
     const [inputValue, setInputValue] = useState('');
     const [textMatch, setTextMatch] = useState(null);
     const [gameStatus, setGameStatus] = useState(true);
     const [wpm, setWpm] = useState(0);
     const [modalVisible, setModalVisible] = useState(false);
 
-    const { counter, startGame, incrementGameCounter } = useContext(
+    const { counter, text, startGame, incrementGameCounter } = useContext(
         gameContext
     );
 
@@ -25,7 +24,7 @@ export default function GameScreen({ navigation }) {
             'https://uselessfacts.jsph.pl/random.json?language=en'
         );
         const res = await req.json();
-        setGameText(res.text);
+        // setGameText(res.text);
     });
 
     const resetGame = () => {
@@ -57,7 +56,7 @@ export default function GameScreen({ navigation }) {
                 resetGame={resetGame}
                 counter={counter}
             />
-            <GameText gameText={gameText} textMatch={textMatch} />
+            <GameText text={text} textMatch={textMatch} />
             <KeyboardAvoidingView
                 behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
                 keyboardVerticalOffset={Platform.OS == 'ios' ? 180 : 20}
@@ -71,7 +70,7 @@ export default function GameScreen({ navigation }) {
                     counter={counter}
                 />
                 <GameTextInput
-                    gameText={gameText}
+                    text={text}
                     setInputValue={setInputValue}
                     inputValue={inputValue}
                     textMatch={textMatch}

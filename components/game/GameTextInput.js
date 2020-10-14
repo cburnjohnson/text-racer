@@ -4,19 +4,19 @@ import { View, TextInput, StyleSheet } from 'react-native';
 export default function GameTextInput({
     inputValue,
     setInputValue,
-    gameText,
+    text,
     textMatch,
     setTextMatch,
     setGameStatus
 }) {
     // after space check the last word
     useEffect(() => {
-        if (inputValue === gameText) {
+        if (inputValue === text) {
             setGameStatus(false);
         }
 
         inputValueLength = inputValue.split('').length;
-        let currentGameText = gameText.substring(0, inputValueLength);
+        let currentGameText = text.substring(0, inputValueLength);
 
         if (currentGameText === inputValue) {
             setTextMatch(true);
