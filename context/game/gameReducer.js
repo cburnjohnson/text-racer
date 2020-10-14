@@ -1,4 +1,4 @@
-import { INCREMENT_GAME_COUNTER } from '../types';
+import { INCREMENT_GAME_COUNTER, SET_INPUT_VALUE } from '../types';
 
 export default (state, action) => {
     switch (action.type) {
@@ -6,6 +6,11 @@ export default (state, action) => {
             return {
                 ...state,
                 counter: state.counter + 1
+            };
+        case SET_INPUT_VALUE:
+            return {
+                ...state,
+                inputValue: action.payload
             };
         default:
             return state;

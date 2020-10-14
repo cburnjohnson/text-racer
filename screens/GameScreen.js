@@ -9,15 +9,19 @@ import WordsPerMinute from '../components/game/WordsPerMinute';
 import ResultsModal from '../components/game/ResultsModal';
 
 export default function GameScreen({ navigation }) {
-    const [inputValue, setInputValue] = useState('');
     const [textMatch, setTextMatch] = useState(null);
     const [gameStatus, setGameStatus] = useState(true);
     const [wpm, setWpm] = useState(0);
     const [modalVisible, setModalVisible] = useState(false);
 
-    const { counter, text, startGame, incrementGameCounter } = useContext(
-        gameContext
-    );
+    const {
+        counter,
+        text,
+        startGame,
+        incrementGameCounter,
+        inputValue,
+        setInputValue
+    } = useContext(gameContext);
 
     const fetchText = useCallback(async () => {
         const req = await fetch(
