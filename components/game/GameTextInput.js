@@ -3,17 +3,21 @@ import { View, TextInput, StyleSheet } from 'react-native';
 
 import gameContext from '../../context/game/gameContext';
 
-export default function GameTextInput({ setGameStatus }) {
+export default function GameTextInput({}) {
     const {
         text,
         textMatch,
         setTextMatch,
         inputValue,
-        setInputValue
+        setInputValue,
+        setGameStatus
     } = useContext(gameContext);
 
     useEffect(() => {
+        console.log(text);
+        console.log(inputValue);
         if (inputValue === text) {
+            console.log('fires?');
             setGameStatus(false);
         }
 

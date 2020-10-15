@@ -9,20 +9,21 @@ import WordsPerMinute from '../components/game/WordsPerMinute';
 import ResultsModal from '../components/game/ResultsModal';
 
 export default function GameScreen({ navigation }) {
-    const [gameStatus, setGameStatus] = useState(true);
-    const [wpm, setWpm] = useState(0);
-    const [modalVisible, setModalVisible] = useState(false);
-
     const {
+        gameStatus,
         counter,
         text,
         startGame,
         textMatch,
         incrementGameCounter,
         inputValue,
-        setInputValue
+        setInputValue,
+        setGameStatus,
+        setWpm,
+        wpm,
+        modalVisible,
+        setModalVisible
     } = useContext(gameContext);
-
     const fetchText = useCallback(async () => {
         const req = await fetch(
             'https://uselessfacts.jsph.pl/random.json?language=en'
@@ -41,6 +42,7 @@ export default function GameScreen({ navigation }) {
     useEffect(() => {
         let gameCounter;
         if (gameStatus === false) {
+            console.log('works');
             setModalVisible(true);
         } else {
             startGame();

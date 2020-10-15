@@ -6,15 +6,21 @@ import {
     INCREMENT_GAME_COUNTER,
     START_GAME,
     SET_INPUT_VALUE,
-    SET_TEXT_MATCH
+    SET_TEXT_MATCH,
+    SET_GAME_STATUS,
+    SET_WPM,
+    SET_MODAL_VISIBLE
 } from '../types';
 
 const GameState = (props) => {
     const initialState = {
+        gameStatus: true,
+        wpm: 0,
         text: 'Test',
         inputValue: '',
         textMatch: null,
-        counter: 0
+        counter: 0,
+        modalVisible: false
     };
 
     const [state, dispatch] = useReducer(gameReducer, initialState);
@@ -28,6 +34,7 @@ const GameState = (props) => {
     };
 
     const setInputValue = (input) => {
+        console.log(input);
         dispatch({ type: SET_INPUT_VALUE, payload: input });
     };
 
@@ -35,17 +42,35 @@ const GameState = (props) => {
         dispatch({ type: SET_TEXT_MATCH, payload: doesTextMatch });
     };
 
+    const setGameStatus = (gameStatus) => {
+        dispatch({ type: SET_GAME_STATUS, payload: gameStatus });
+    };
+
+    const setWpm = (wpm) => {
+        dispatch({ type: SET_WPM, payload: wpm });
+    };
+
+    const setModalVisible = (modalVisible) => {
+        dispatch({ type: SET_MODAL_VISIBLE, action: modalVisible });
+    };
+
     return (
         <GameContext.Provider
             value={{
+                gameStatus: true,
                 text: state.text,
                 counter: state.counter,
                 inputValue: state.inputValue,
                 textMatch: state.textMatch,
+                wpm: state.wpm,
+                modalVisible: state.modalVisible,
+                setModalVisible,
+                setWpm,
                 startGame,
                 incrementGameCounter,
                 setInputValue,
-                setTextMatch
+                setTextMatch,
+                setGameStatus
             }}
         >
             {props.children}
