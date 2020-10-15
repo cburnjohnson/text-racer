@@ -73,14 +73,7 @@ export default function GameScreen({ navigation }) {
                     setWpm={setWpm}
                     counter={counter}
                 />
-                <GameTextInput
-                    text={text}
-                    setInputValue={setInputValue}
-                    inputValue={inputValue}
-                    textMatch={textMatch}
-                    setTextMatch={setTextMatch}
-                    setGameStatus={setGameStatus}
-                />
+                <GameTextInput setGameStatus={setGameStatus} />
             </KeyboardAvoidingView>
         </View>
     );

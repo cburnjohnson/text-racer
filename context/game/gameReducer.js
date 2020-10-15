@@ -1,4 +1,8 @@
-import { INCREMENT_GAME_COUNTER, SET_INPUT_VALUE } from '../types';
+import {
+    INCREMENT_GAME_COUNTER,
+    SET_INPUT_VALUE,
+    SET_TEXT_MATCH
+} from '../types';
 
 export default (state, action) => {
     switch (action.type) {
@@ -11,6 +15,11 @@ export default (state, action) => {
             return {
                 ...state,
                 inputValue: action.payload
+            };
+        case SET_TEXT_MATCH:
+            return {
+                ...state,
+                textMatch: action.payload
             };
         default:
             return state;

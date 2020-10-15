@@ -2,7 +2,12 @@ import React, { useReducer } from 'react';
 import GameContext from './gameContext';
 import gameReducer from './gameReducer';
 
-import { INCREMENT_GAME_COUNTER, START_GAME, SET_INPUT_VALUE } from '../types';
+import {
+    INCREMENT_GAME_COUNTER,
+    START_GAME,
+    SET_INPUT_VALUE,
+    SET_TEXT_MATCH
+} from '../types';
 
 const GameState = (props) => {
     const initialState = {
@@ -26,6 +31,10 @@ const GameState = (props) => {
         dispatch({ type: SET_INPUT_VALUE, payload: input });
     };
 
+    const setTextMatch = (doesTextMatch) => {
+        dispatch({ type: SET_TEXT_MATCH, payload: doesTextMatch });
+    };
+
     return (
         <GameContext.Provider
             value={{
@@ -35,7 +44,8 @@ const GameState = (props) => {
                 textMatch: state.textMatch,
                 startGame,
                 incrementGameCounter,
-                setInputValue
+                setInputValue,
+                setTextMatch
             }}
         >
             {props.children}

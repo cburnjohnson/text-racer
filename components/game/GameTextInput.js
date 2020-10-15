@@ -1,15 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { View, TextInput, StyleSheet } from 'react-native';
 
-export default function GameTextInput({
-    inputValue,
-    setInputValue,
-    text,
-    textMatch,
-    setTextMatch,
-    setGameStatus
-}) {
-    // after space check the last word
+import gameContext from '../../context/game/gameContext';
+
+export default function GameTextInput({ setGameStatus }) {
+    const {
+        text,
+        textMatch,
+        setTextMatch,
+        inputValue,
+        setInputValue
+    } = useContext(gameContext);
+
     useEffect(() => {
         if (inputValue === text) {
             setGameStatus(false);
