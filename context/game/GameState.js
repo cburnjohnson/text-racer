@@ -9,7 +9,8 @@ import {
     SET_TEXT_MATCH,
     SET_GAME_STATUS,
     SET_WPM,
-    SET_MODAL_VISIBLE
+    SET_MODAL_VISIBLE,
+    RESET_GAME
 } from '../types';
 
 const GameState = (props) => {
@@ -28,6 +29,10 @@ const GameState = (props) => {
     const startGame = () => {
         dispatch({ type: START_GAME });
     };
+
+    const resetGame = () => {
+        dispatch({type: RESET_GAME})
+    }
 
     const incrementGameCounter = () => {
         dispatch({ type: INCREMENT_GAME_COUNTER });
@@ -69,7 +74,8 @@ const GameState = (props) => {
                 incrementGameCounter,
                 setInputValue,
                 setTextMatch,
-                setGameStatus
+                setGameStatus,
+                resetGame
             }}
         >
             {props.children}

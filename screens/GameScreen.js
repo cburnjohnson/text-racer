@@ -24,7 +24,7 @@ export default function GameScreen({ navigation }) {
         modalVisible,
         setModalVisible
     } = useContext(gameContext);
-    
+
     const fetchText = useCallback(async () => {
         const req = await fetch(
             'https://uselessfacts.jsph.pl/random.json?language=en'
@@ -32,13 +32,6 @@ export default function GameScreen({ navigation }) {
         const res = await req.json();
         // setGameText(res.text);
     });
-
-    const resetGame = () => {
-        setGameStatus(true);
-        setModalVisible(false);
-        setInputValue('');
-        setWpm(0);
-    };
 
     useEffect(() => {
         let gameCounter;
@@ -61,7 +54,6 @@ export default function GameScreen({ navigation }) {
             <ResultsModal
                 wpm={wpm}
                 modalVisible={modalVisible}
-                resetGame={resetGame}
                 counter={counter}
             />
             <GameText text={text} textMatch={textMatch} />

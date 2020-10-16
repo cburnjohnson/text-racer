@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import {
     Alert,
     Modal,
@@ -8,7 +8,11 @@ import {
     View
 } from 'react-native';
 
-const ResultsModal = ({ wpm, modalVisible, counter, resetGame }) => {
+import gameContext from '../../context/game/gameContext';
+
+const ResultsModal = ({ wpm, modalVisible, counter }) => {
+    const {resetGame} = useContext(gameContext);
+
     return (
         <View style={styles.centeredView}>
             <Modal

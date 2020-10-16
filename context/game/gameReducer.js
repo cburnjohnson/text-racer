@@ -1,5 +1,6 @@
 import {
     INCREMENT_GAME_COUNTER,
+    RESET_GAME,
     SET_GAME_STATUS,
     SET_INPUT_VALUE,
     SET_MODAL_VISIBLE,
@@ -8,6 +9,15 @@ import {
 
 export default (state, action) => {
     switch (action.type) {
+        case RESET_GAME:
+            return {
+                ...state,
+                gameStatus: true,
+                modalVisible: false,
+                wpm: 0,
+                inputValue: '',
+                counter: 0
+            }
         case INCREMENT_GAME_COUNTER:
             return {
                 ...state,
