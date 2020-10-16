@@ -24,6 +24,7 @@ export default function GameScreen({ navigation }) {
         modalVisible,
         setModalVisible
     } = useContext(gameContext);
+    
     const fetchText = useCallback(async () => {
         const req = await fetch(
             'https://uselessfacts.jsph.pl/random.json?language=en'
@@ -41,6 +42,7 @@ export default function GameScreen({ navigation }) {
 
     useEffect(() => {
         let gameCounter;
+        console.log(gameStatus + 'inside useeffect')
         if (gameStatus === false) {
             console.log('works');
             setModalVisible(true);

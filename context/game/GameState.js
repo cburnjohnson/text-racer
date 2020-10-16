@@ -34,7 +34,6 @@ const GameState = (props) => {
     };
 
     const setInputValue = (input) => {
-        console.log(input);
         dispatch({ type: SET_INPUT_VALUE, payload: input });
     };
 
@@ -57,7 +56,7 @@ const GameState = (props) => {
     return (
         <GameContext.Provider
             value={{
-                gameStatus: true,
+                gameStatus: state.gameStatus,
                 text: state.text,
                 counter: state.counter,
                 inputValue: state.inputValue,
