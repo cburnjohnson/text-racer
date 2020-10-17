@@ -10,8 +10,9 @@ import {
 
 import gameContext from '../../context/game/gameContext';
 
-const ResultsModal = ({ wpm, modalVisible, counter }) => {
-    const {resetGame} = useContext(gameContext);
+const ResultsModal = () => {
+    
+    const {resetGame, wpm, modalVisible, counter} = useContext(gameContext);
 
     return (
         <View style={styles.centeredView}>

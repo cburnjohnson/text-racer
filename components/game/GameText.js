@@ -1,7 +1,12 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-export default function GameText({ text, textMatch }) {
+import gameContext from '../../context/game/gameContext';
+
+export default function GameText() {
+
+    const {text, textMatch} = useContext(gameContext);
+
     return (
         <View>
             <Text

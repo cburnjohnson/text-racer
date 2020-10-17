@@ -14,10 +14,7 @@ export default function GameTextInput({}) {
     } = useContext(gameContext);
 
     useEffect(() => {
-        console.log(text);
-        console.log(inputValue);
         if (inputValue === text) {
-            console.log('fires?');
             setGameStatus(false);
         }
 

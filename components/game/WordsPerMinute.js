@@ -1,7 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useContext} from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-export default function WordsPerMinute({ inputValue, counter, wpm, setWpm }) {
+import gameContext from '../../context/game/gameContext';
+
+export default function WordsPerMinute() {
+
+    const {inputValue, wpm, setWpm, counter} = useContext(gameContext);
+
     useEffect(() => {
         setWpm(calculateWpm());
     }, [counter]);

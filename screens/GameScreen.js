@@ -8,20 +8,13 @@ import GameText from '../components/game/GameText';
 import WordsPerMinute from '../components/game/WordsPerMinute';
 import ResultsModal from '../components/game/ResultsModal';
 
-export default function GameScreen({ navigation }) {
+export default function GameScreen() {
     const {
         gameStatus,
         counter,
-        text,
         startGame,
-        textMatch,
         incrementGameCounter,
-        inputValue,
-        setInputValue,
         setGameStatus,
-        setWpm,
-        wpm,
-        modalVisible,
         setModalVisible
     } = useContext(gameContext);
 
@@ -35,9 +28,7 @@ export default function GameScreen({ navigation }) {
 
     useEffect(() => {
         let gameCounter;
-        console.log(gameStatus + 'inside useeffect')
         if (gameStatus === false) {
-            console.log('works');
             setModalVisible(true);
         } else {
             startGame();
@@ -51,12 +42,8 @@ export default function GameScreen({ navigation }) {
 
     return (
         <View style={styles.container}>
-            <ResultsModal
-                wpm={wpm}
-                modalVisible={modalVisible}
-                counter={counter}
-            />
-            <GameText text={text} textMatch={textMatch} />
+            <ResultsModal/>
+            <GameText />
             <KeyboardAvoidingView
                 behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
                 keyboardVerticalOffset={Platform.OS == 'ios' ? 180 : 20}
@@ -64,9 +51,6 @@ export default function GameScreen({ navigation }) {
             >
                 <Text style={{ textAlign: 'center' }}>Time: {counter}</Text>
                 <WordsPerMinute
-                    inputValue={inputValue}
-                    wpm={wpm}
-                    setWpm={setWpm}
                     counter={counter}
                 />
                 <GameTextInput setGameStatus={setGameStatus} />
