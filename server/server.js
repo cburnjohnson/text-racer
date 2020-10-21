@@ -4,9 +4,8 @@ const app = express();
 
 app.use(express.json());
 
-app.get('/', (req, res)=> {
-    res.send('works')
-})
+// Routes
+app.use('/api/users', require('./routes/users'));
 
 const PORT = process.env.PORT || 5000;
 
