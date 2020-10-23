@@ -6,4 +6,5 @@ export const SET_GAME_STATUS = 'SET_GAME_STATUS';
 export const SET_WPM = 'SET_WPM';
 export const SET_MODAL_VISIBLE = 'SET_MODAL_VISIBLE';
 export const RESET_GAME = 'RESET_GAME';
-export const REGISTER_USER = 'REGISTER_USER';
+export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
+export const REGISTER_FAIL = 'REGISTER_FAIL';

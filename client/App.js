@@ -11,21 +11,24 @@ import LoginScreen from './screens/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen'
 
 import GameState from './context/game/GameState';
+import AuthState from './context/auth/AuthState';
 
 const Stack = createStackNavigator();
 
 export default function App() {
     return (
-        <GameState>
-            <NavigationContainer>
-                <Stack.Navigator initialRouteName="Login">
-                    <Stack.Screen name="Login" component={LoginScreen} />
-                    <Stack.Screen name="Register" component={RegisterScreen} />
-                    <Stack.Screen name="Home" component={HomeScreen} />
-                    <Stack.Screen name="Text Racer" component={GameScreen} />
-                    <Stack.Screen name="Results" component={ResultsScreen} />
-                </Stack.Navigator>
-            </NavigationContainer>
-        </GameState>
+        <AuthState>
+            <GameState>
+                <NavigationContainer>
+                    <Stack.Navigator initialRouteName="Login">
+                        <Stack.Screen name="Login" component={LoginScreen} />
+                        <Stack.Screen name="Register" component={RegisterScreen} />
+                        <Stack.Screen name="Home" component={HomeScreen} />
+                        <Stack.Screen name="Text Racer" component={GameScreen} />
+                        <Stack.Screen name="Results" component={ResultsScreen} />
+                    </Stack.Navigator>
+                </NavigationContainer>
+            </GameState>
+        </AuthState>
     );
 }

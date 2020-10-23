@@ -1,19 +1,44 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Alert } from 'react-native'
 
 export default function RegisterScreen() {
+    const [user, setUser] = useState({
+        username: '',
+        email: '',
+        password: '',
+        password2: ''
+    })
+
+    const {user, email, password, password2} = user;
+
+    const onChange = e => setUser({...user, [e.target.name]: e.target.value})
+
+    const onSubmit = e => {
+        e.preventDefault();
+        if (password !== password2) {
+            Alert.alert('password doesnt match')
+            return;
+        } else {
+            register({
+                name,
+                email,
+                password
+            });
+        }
+    };
+
     return (
         <View style={styles.container}>
             <Text>Username</Text>
-            <TextInput style={styles.textInput} />
+            <TextInput style={styles.textInput} name='username' onChange={onChange}/>
             <Text>Password</Text>
-            <TextInput style={styles.textInput} />
+            <TextInput style={styles.textInput} name='password' onChange={onChange} />
             <Text>Confirm Password</Text>
-            <TextInput style={styles.textInput} />
+            <TextInput style={styles.textInput} name='password2' onChange={onChange} />
             
             <TouchableOpacity
                     style={styles.Btn}
-                    onPress={() => Alert.alert('Registered')}
+                    onPress={onSubmit}
                     underlayColor="#fff">
                 <Text style={styles.btnText}>Register</Text>
             </TouchableOpacity>
