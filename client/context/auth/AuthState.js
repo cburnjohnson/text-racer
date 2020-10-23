@@ -1,17 +1,18 @@
-import React, {useReducer} from 'react';
+import React, { useReducer } from 'react';
 import AuthContext from './authContext';
 import authReducer from './authReducer';
+import { AsyncStorage } from 'react-native';
 
 import { REGISTER_SUCCESS } from '../types';
 
 const AuthState = (props) => {
     const initialState = {
-        token: localStorage.getItem('token'),
+        token: AsyncStorage.getItem('token'),
         isAuthenticated: null,
         user: null,
         error: null,
         loading: true
-    }
+    };
 
     const [state, dispatch] = useReducer(authReducer, initialState);
 
@@ -21,20 +22,18 @@ const AuthState = (props) => {
             headers: {
                 'Content-Type': 'application/json'
             }
-        }
+        };
 
         try {
             const res = await axios.post('/api/users', formData, config);
 
-            dispatch({type: REGISTER_SUCCESS, payload: res.data})
+            dispatch({ type: REGISTER_SUCCESS, payload: res.data });
 
             // loadUser();
-
         } catch (err) {
-            dispatch({type: REGISTER_FAIL, payload: err.response.data.msg})
+            dispatch({ type: REGISTER_FAIL, payload: err.response.data.msg });
         }
-
-    }
+    };
 
     return (
         <AuthContext.Provider
@@ -44,12 +43,12 @@ const AuthState = (props) => {
                 user: state.user,
                 error: state.error,
                 loading: state.loading,
-                register,
+                register
             }}
         >
             {props.children}
         </AuthContext.Provider>
-    )
-}
+    );
+};
 
 export default AuthState;

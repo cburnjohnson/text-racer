@@ -1,30 +1,38 @@
-import React, {useState, useContext} from 'react'
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Alert } from 'react-native'
+import React, { useState, useContext } from 'react';
+import {
+    View,
+    Text,
+    StyleSheet,
+    TextInput,
+    TouchableOpacity,
+    Alert
+} from 'react-native';
 
 import authContext from '../context/auth/authContext';
 
 export default function RegisterScreen() {
-    const {register} = useContext(authContext)
+    const { register } = useContext(authContext);
 
     const [user, setUser] = useState({
         username: '',
         email: '',
         password: '',
         password2: ''
-    })
+    });
 
-    const {user, email, password, password2} = user;
+    const { username, email, password, password2 } = user;
 
-    const onChange = e => setUser({...user, [e.target.name]: e.target.value})
+    const onChange = (e) =>
+        setUser({ ...user, [e.target.name]: e.target.value });
 
-    const onSubmit = e => {
+    const onSubmit = (e) => {
         e.preventDefault();
         if (password !== password2) {
-            Alert.alert('password doesnt match')
+            Alert.alert('password doesnt match');
             return;
         } else {
             register({
-                name,
+                username,
                 email,
                 password
             });
@@ -34,20 +42,33 @@ export default function RegisterScreen() {
     return (
         <View style={styles.container}>
             <Text>Username</Text>
-            <TextInput style={styles.textInput} name='username' onChange={onChange}/>
+            <TextInput
+                style={styles.textInput}
+                name="username"
+                onChange={onChange}
+            />
             <Text>Password</Text>
-            <TextInput style={styles.textInput} name='password' onChange={onChange} />
+            <TextInput
+                style={styles.textInput}
+                name="password"
+                onChange={onChange}
+            />
             <Text>Confirm Password</Text>
-            <TextInput style={styles.textInput} name='password2' onChange={onChange} />
-            
+            <TextInput
+                style={styles.textInput}
+                name="password2"
+                onChange={onChange}
+            />
+
             <TouchableOpacity
-                    style={styles.Btn}
-                    onPress={onSubmit}
-                    underlayColor="#fff">
+                style={styles.Btn}
+                onPress={onSubmit}
+                underlayColor="#fff"
+            >
                 <Text style={styles.btnText}>Register</Text>
             </TouchableOpacity>
         </View>
-    )
+    );
 }
 
 const styles = StyleSheet.create({
@@ -82,4 +103,4 @@ const styles = StyleSheet.create({
         fontSize: 20,
         textTransform: 'uppercase'
     }
-})
+});
