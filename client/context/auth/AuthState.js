@@ -2,8 +2,9 @@ import React, { useReducer } from 'react';
 import AuthContext from './authContext';
 import authReducer from './authReducer';
 import { AsyncStorage } from 'react-native';
+import axios from 'axios';
 
-import { REGISTER_SUCCESS } from '../types';
+import { REGISTER_SUCCESS, REGISTER_FAIL } from '../types';
 
 const AuthState = (props) => {
     const initialState = {
@@ -20,17 +21,24 @@ const AuthState = (props) => {
     const register = async (formData) => {
         const config = {
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/x-www-form-urlencoded',
+                Accept: 'application/json'
             }
         };
-
+        console.log(formData);
         try {
-            const res = await axios.post('/api/users', formData, config);
+            console.log('before firingg');
+            const res = await axios.post(
+                'http://192.168.1.116:5000/api/users',
+                formData,
+                config
+            );
 
             dispatch({ type: REGISTER_SUCCESS, payload: res.data });
 
             // loadUser();
         } catch (err) {
+            console.log(err);
             dispatch({ type: REGISTER_FAIL, payload: err.response.data.msg });
         }
     };

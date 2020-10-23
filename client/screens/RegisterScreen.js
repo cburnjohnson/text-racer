@@ -7,6 +7,7 @@ import {
     TouchableOpacity,
     Alert
 } from 'react-native';
+import { onChange } from 'react-native-reanimated';
 
 import authContext from '../context/auth/authContext';
 
@@ -21,9 +22,6 @@ export default function RegisterScreen() {
     });
 
     const { username, email, password, password2 } = user;
-
-    const onChange = (e) =>
-        setUser({ ...user, [e.target.name]: e.target.value });
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -44,20 +42,24 @@ export default function RegisterScreen() {
             <Text>Username</Text>
             <TextInput
                 style={styles.textInput}
-                name="username"
-                onChange={onChange}
+                value={username}
+                onChangeText={(username) => {
+                    setUser({ ...user, username: username });
+                }}
             />
             <Text>Password</Text>
             <TextInput
                 style={styles.textInput}
-                name="password"
-                onChange={onChange}
+                onChangeText={(password) => {
+                    setUser({ ...user, password: password });
+                }}
             />
             <Text>Confirm Password</Text>
             <TextInput
                 style={styles.textInput}
-                name="password2"
-                onChange={onChange}
+                onChangeText={(password2) => {
+                    setUser({ ...user, password2: password2 });
+                }}
             />
 
             <TouchableOpacity
