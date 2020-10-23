@@ -1,7 +1,11 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Alert } from 'react-native'
 
+import authContext from '../context/auth/authContext';
+
 export default function RegisterScreen() {
+    const {register} = useContext(authContext)
+
     const [user, setUser] = useState({
         username: '',
         email: '',
