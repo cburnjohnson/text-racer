@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react';
 import AuthContext from './authContext';
 import authReducer from './authReducer';
-import { AsyncStorage } from 'react-native';
+import { AsyncStorage, Alert } from 'react-native';
 import axios from 'axios';
 
 import { REGISTER_SUCCESS, REGISTER_FAIL } from '../types';
@@ -37,7 +37,7 @@ const AuthState = (props) => {
 
             // loadUser();
         } catch (err) {
-            console.log(err);
+            Alert.alert('err');
             dispatch({ type: REGISTER_FAIL, payload: err.response.data.msg });
         }
     };

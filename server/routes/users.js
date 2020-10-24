@@ -27,7 +27,6 @@ router.post(
         let { username, email, password } = req.body;
 
         try {
-            console.log(req.body);
             let user = await User.findOne({ username: username });
             if (user) {
                 return res.status(400).json({ msg: 'User already exists' });
