@@ -21,8 +21,7 @@ const AuthState = (props) => {
     const register = async (formData) => {
         const config = {
             headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-                Accept: 'application/json'
+                'Content-Type': 'application/json'
             }
         };
         console.log(formData);
