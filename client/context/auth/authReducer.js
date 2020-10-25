@@ -1,11 +1,11 @@
-import { AsyncStorage } from 'react-native';
+import * as SecureStore from 'expo-secure-store';
 
 import { REGISTER_SUCCESS } from '../types';
 
-export default (state, action) => {
+export default async (state, action) => {
     switch (action.type) {
         case REGISTER_SUCCESS:
-            AsyncStorage.setItem('token', action.payload.token);
+            await SecureStore.setItemAsync('token', action.payload.token);
             return {
                 ...state,
                 ...action.payload,

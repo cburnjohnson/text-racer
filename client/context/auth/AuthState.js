@@ -3,12 +3,14 @@ import AuthContext from './authContext';
 import authReducer from './authReducer';
 import { AsyncStorage, Alert } from 'react-native';
 import axios from 'axios';
+import * as SecureStore from 'expo-secure-store';
+import setAuthToken from '../../utils/setAuthToken';
 
 import { REGISTER_SUCCESS, REGISTER_FAIL } from '../types';
 
 const AuthState = (props) => {
     const initialState = {
-        token: AsyncStorage.getItem('token'),
+        token: SecureStore.getItemAsync('token'),
         isAuthenticated: null,
         user: null,
         error: null,
@@ -17,6 +19,13 @@ const AuthState = (props) => {
 
     const [state, dispatch] = useReducer(authReducer, initialState);
 
+    // Load User
+    const loadUser = async () => {
+        if (await SecureStore.getItemAsync('token')) {
+            setAuthToken(await SecureStore.getItemAsync('token'));
+        }
+    };
+
     // Register User
     const register = async (formData) => {
         const config = {
@@ -24,9 +33,7 @@ const AuthState = (props) => {
                 'Content-Type': 'application/json'
             }
         };
-        console.log(formData);
         try {
-            console.log('before firingg');
             const res = await axios.post(
                 'http://192.168.1.116:5000/api/users',
                 formData,
@@ -35,7 +42,7 @@ const AuthState = (props) => {
 
             dispatch({ type: REGISTER_SUCCESS, payload: res.data });
 
-            // loadUser();
+            loadUser();
         } catch (err) {
             Alert.alert('err');
             dispatch({ type: REGISTER_FAIL, payload: err.response.data.msg });
@@ -50,7 +57,8 @@ const AuthState = (props) => {
                 user: state.user,
                 error: state.error,
                 loading: state.loading,
-                register
+                register,
+                loadUser
             }}
         >
             {props.children}
