@@ -12,6 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Routes
 app.use('/api/users', require('./routes/users'));
+app.use('/api/auth', require('./routes/users'));
 
 const PORT = process.env.PORT || 5000;
 

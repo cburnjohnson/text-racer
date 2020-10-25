@@ -7,7 +7,6 @@ import {
     TouchableOpacity,
     Alert
 } from 'react-native';
-import { onChange } from 'react-native-reanimated';
 
 import authContext from '../context/auth/authContext';
 

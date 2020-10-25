@@ -6,11 +6,16 @@ import axios from 'axios';
 import * as SecureStore from 'expo-secure-store';
 import setAuthToken from '../../utils/setAuthToken';
 
-import { REGISTER_SUCCESS, REGISTER_FAIL } from '../types';
+import {
+    REGISTER_SUCCESS,
+    REGISTER_FAIL,
+    USER_LOADED,
+    AUTH_ERROR
+} from '../types';
 
 const AuthState = (props) => {
     const initialState = {
-        token: SecureStore.getItemAsync('token'),
+        token: null,
         isAuthenticated: null,
         user: null,
         error: null,
@@ -23,6 +28,13 @@ const AuthState = (props) => {
     const loadUser = async () => {
         if (await SecureStore.getItemAsync('token')) {
             setAuthToken(await SecureStore.getItemAsync('token'));
+        }
+
+        try {
+            const res = await axios.get('/api/auth');
+            dispatch({ type: USER_LOADED, payload: res.data });
+        } catch (err) {
+            dispatch({ type: AUTH_ERROR });
         }
     };
 
@@ -43,6 +55,7 @@ const AuthState = (props) => {
             dispatch({ type: REGISTER_SUCCESS, payload: res.data });
 
             loadUser();
+            console.log(initialState);
         } catch (err) {
             Alert.alert('err');
             dispatch({ type: REGISTER_FAIL, payload: err.response.data.msg });
