@@ -31,10 +31,10 @@ const AuthState = (props) => {
         }
 
         try {
-            const res = await axios.get('/api/auth');
+            const res = await axios.get('http://192.168.1.116:5000/api/auth');
             dispatch({ type: USER_LOADED, payload: res.data });
         } catch (err) {
-            dispatch({ type: AUTH_ERROR });
+            dispatch({ type: AUTH_ERROR, payload: err.response.data.msg });
         }
     };
 
