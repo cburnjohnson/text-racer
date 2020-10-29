@@ -2,10 +2,10 @@ import * as SecureStore from 'expo-secure-store';
 
 import { REGISTER_SUCCESS, USER_LOADED, AUTH_ERROR } from '../types';
 
-export default async (state, action) => {
+export default (state, action) => {
     switch (action.type) {
         case REGISTER_SUCCESS:
-            await SecureStore.setItemAsync('token', action.payload.token);
+            // await SecureStore.setItemAsync('token', action.payload.token);
             return {
                 ...state,
                 ...action.payload,
@@ -13,7 +13,7 @@ export default async (state, action) => {
                 loading: false
             };
         case AUTH_ERROR:
-            await SecureStore.deleteItemAsync('token');
+            // await SecureStore.deleteItemAsync('token');
             return {
                 ...state,
                 token: null,
