@@ -5,7 +5,8 @@ import {
     SET_GAME_TEXT,
     SET_INPUT_VALUE,
     SET_MODAL_VISIBLE,
-    SET_TEXT_MATCH
+    SET_TEXT_MATCH,
+    SET_WPM
 } from '../types';
 
 export default (state, action) => {
@@ -48,6 +49,11 @@ export default (state, action) => {
             return {
                 ...state,
                 modalVisible: action.payload
+            };
+        case SET_WPM:
+            return {
+                ...state,
+                wpm: action.payload
             };
         default:
             return state;

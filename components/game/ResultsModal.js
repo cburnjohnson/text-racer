@@ -39,9 +39,7 @@ const ResultsModal = () => {
                                 >
                                     {counter} Seconds
                                 </Text>
-                                <Text style={{ textAlign: 'center' }}>
-                                    Words Per Minute
-                                </Text>
+                                <Text style={{ textAlign: 'center' }}>WPM</Text>
                                 <Text
                                     style={{
                                         marginBottom: 20,

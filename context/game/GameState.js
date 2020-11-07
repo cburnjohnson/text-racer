@@ -18,11 +18,11 @@ const GameState = (props) => {
     const initialState = {
         gameStatus: true,
         wpm: 0,
-        text: 'Loading...',
+        text: 'text',
         inputValue: '',
         textMatch: null,
         counter: 0,
-        modalVisible: true
+        modalVisible: false
     };
 
     const [state, dispatch] = useReducer(gameReducer, initialState);
@@ -39,9 +39,15 @@ const GameState = (props) => {
         }
     };
 
+    const calculateWpm = () => {
+        let textLength = state.text.split('').length;
+        let wpm = textLength / 5 / (state.counter / 60);
+        console.log(wpm);
+        setWpm(wpm);
+    };
+
     const startGame = () => {
         fetchText();
-        console.log('fires');
         dispatch({ type: START_GAME });
     };
 
@@ -62,6 +68,9 @@ const GameState = (props) => {
     };
 
     const setGameStatus = (gameStatus) => {
+        if (gameStatus === false) {
+            calculateWpm();
+        }
         dispatch({ type: SET_GAME_STATUS, payload: gameStatus });
     };
 

@@ -5,7 +5,6 @@ import gameContext from '../context/game/gameContext';
 
 import GameTextInput from '../components/game/GameTextInput';
 import GameText from '../components/game/GameText';
-import WordsPerMinute from '../components/game/WordsPerMinute';
 import ResultsModal from '../components/game/ResultsModal';
 
 export default function GameScreen() {
@@ -29,7 +28,6 @@ export default function GameScreen() {
         return () => {
             clearInterval(gameCounter);
         };
-        // fetchText();
     }, [gameStatus]);
 
     return (
@@ -41,10 +39,6 @@ export default function GameScreen() {
                 keyboardVerticalOffset={Platform.OS == 'ios' ? 180 : 20}
                 enabled={Platform.OS === 'ios' ? true : false}
             >
-                {/* <Text style={{ textAlign: 'center' }}>Time: {counter}</Text>
-                <WordsPerMinute
-                    counter={counter}
-                /> */}
                 <GameTextInput setGameStatus={setGameStatus} />
             </KeyboardAvoidingView>
         </View>
