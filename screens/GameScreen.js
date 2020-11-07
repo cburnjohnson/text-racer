@@ -18,14 +18,6 @@ export default function GameScreen() {
         setModalVisible
     } = useContext(gameContext);
 
-    const fetchText = useCallback(async () => {
-        const req = await fetch(
-            'https://uselessfacts.jsph.pl/random.json?language=en'
-        );
-        const res = await req.json();
-        // setGameText(res.text);
-    });
-
     useEffect(() => {
         let gameCounter;
         if (gameStatus === false) {
@@ -42,17 +34,17 @@ export default function GameScreen() {
 
     return (
         <View style={styles.container}>
-            <ResultsModal/>
+            <ResultsModal />
             <GameText />
             <KeyboardAvoidingView
                 behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
                 keyboardVerticalOffset={Platform.OS == 'ios' ? 180 : 20}
                 enabled={Platform.OS === 'ios' ? true : false}
             >
-                <Text style={{ textAlign: 'center' }}>Time: {counter}</Text>
+                {/* <Text style={{ textAlign: 'center' }}>Time: {counter}</Text>
                 <WordsPerMinute
                     counter={counter}
-                />
+                /> */}
                 <GameTextInput setGameStatus={setGameStatus} />
             </KeyboardAvoidingView>
         </View>

@@ -2,6 +2,7 @@ import {
     INCREMENT_GAME_COUNTER,
     RESET_GAME,
     SET_GAME_STATUS,
+    SET_GAME_TEXT,
     SET_INPUT_VALUE,
     SET_MODAL_VISIBLE,
     SET_TEXT_MATCH
@@ -9,6 +10,11 @@ import {
 
 export default (state, action) => {
     switch (action.type) {
+        case SET_GAME_TEXT:
+            return {
+                ...state,
+                text: action.payload
+            };
         case RESET_GAME:
             return {
                 ...state,
@@ -17,7 +23,7 @@ export default (state, action) => {
                 wpm: 0,
                 inputValue: '',
                 counter: 0
-            }
+            };
         case INCREMENT_GAME_COUNTER:
             return {
                 ...state,
@@ -34,7 +40,6 @@ export default (state, action) => {
                 textMatch: action.payload
             };
         case SET_GAME_STATUS:
-            console.log(state.gameStatus);
             return {
                 ...state,
                 gameStatus: action.payload
