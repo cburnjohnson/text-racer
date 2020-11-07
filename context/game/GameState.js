@@ -22,7 +22,7 @@ const GameState = (props) => {
         inputValue: '',
         textMatch: null,
         counter: 0,
-        modalVisible: false
+        modalVisible: true
     };
 
     const [state, dispatch] = useReducer(gameReducer, initialState);

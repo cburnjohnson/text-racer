@@ -11,8 +11,7 @@ import {
 import gameContext from '../../context/game/gameContext';
 
 const ResultsModal = () => {
-    
-    const {resetGame, wpm, modalVisible, counter} = useContext(gameContext);
+    const { resetGame, wpm, modalVisible, counter } = useContext(gameContext);
 
     return (
         <View style={styles.centeredView}>
@@ -27,23 +26,43 @@ const ResultsModal = () => {
                 <View style={styles.centeredView}>
                     <View style={styles.modalView}>
                         <Text style={styles.modalTextHeader}>Results</Text>
+                        <View style={styles.modalInfo}>
+                            <View>
+                                <Text style={{ textAlign: 'center' }}>
+                                    Time
+                                </Text>
+                                <Text
+                                    style={{
+                                        marginBottom: 10,
+                                        textAlign: 'center'
+                                    }}
+                                >
+                                    {counter} Seconds
+                                </Text>
+                                <Text style={{ textAlign: 'center' }}>
+                                    Words Per Minute
+                                </Text>
+                                <Text
+                                    style={{
+                                        marginBottom: 20,
+                                        textAlign: 'center'
+                                    }}
+                                >
+                                    {wpm}
+                                </Text>
+                            </View>
 
-                        <View>
-                            <Text>Time: {counter} seconds</Text>
-                            <Text>Words Per Minute: {wpm}</Text>
+                            <TouchableHighlight
+                                style={styles.resetBtn}
+                                onPress={() => {
+                                    resetGame();
+                                }}
+                            >
+                                <Text style={styles.resetBtnText}>
+                                    Play Again
+                                </Text>
+                            </TouchableHighlight>
                         </View>
-
-                        <TouchableHighlight
-                            style={{
-                                ...styles.openButton,
-                                backgroundColor: '#2196F3'
-                            }}
-                            onPress={() => {
-                                resetGame();
-                            }}
-                        >
-                            <Text style={styles.playBtn}>Play Again</Text>
-                        </TouchableHighlight>
                     </View>
                 </View>
             </Modal>
@@ -54,7 +73,7 @@ const ResultsModal = () => {
 const styles = StyleSheet.create({
     centeredView: {
         position: 'absolute',
-        top: 250,
+        top: 200,
         left: 0,
         bottom: 0,
         right: 0,
@@ -63,7 +82,9 @@ const styles = StyleSheet.create({
     modalView: {
         backgroundColor: 'white',
         borderRadius: 20,
-        padding: 35,
+        padding: 50,
+        paddingTop: 20,
+        paddingBottom: 20,
         alignItems: 'center',
         shadowColor: '#000',
         shadowOffset: {
@@ -74,20 +95,27 @@ const styles = StyleSheet.create({
         shadowRadius: 3.84,
         elevation: 5
     },
-    openButton: {
+    resetBtn: {
+        textAlign: 'center',
         backgroundColor: '#F194FF',
         borderRadius: 20,
-        padding: 10,
+        padding: 12,
         elevation: 2
     },
-    playBtn: {
+    resetBtnText: {
         color: 'white',
         fontWeight: 'bold',
-        textAlign: 'center'
+        textTransform: 'uppercase'
     },
     modalTextHeader: {
         marginBottom: 15,
-        textAlign: 'center'
+        textAlign: 'center',
+        fontWeight: 'bold',
+        textTransform: 'uppercase',
+        fontSize: 26
+    },
+    modalInfo: {
+        alignItems: 'center'
     }
 });
 
