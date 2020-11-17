@@ -18,7 +18,7 @@ const GameState = (props) => {
     const initialState = {
         gameStatus: true,
         wpm: 0,
-        text: 'text',
+        text: 'Loading...',
         inputValue: '',
         textMatch: null,
         counter: 0,

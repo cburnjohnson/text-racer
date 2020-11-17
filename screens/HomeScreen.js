@@ -1,11 +1,18 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 
 export default function HomeScreen({ navigation }) {
     return (
         <View style={styles.container}>
             <View style={styles.homeFlex}>
-                <Text style={styles.headerText}>Text Racer</Text>
+                <Text style={styles.headerText}>
+                    Text Racer
+                    <Image
+                        style={styles.icon}
+                        source={require('../assets/images/traffic-light-icon.png')}
+                    />
+                </Text>
+
                 <TouchableOpacity
                     style={styles.startBtn}
                     onPress={() => navigation.navigate('Text Racer')}
@@ -46,6 +53,8 @@ const styles = StyleSheet.create({
         paddingLeft: 10,
         paddingRight: 10,
         fontSize: 20,
-        textTransform: 'uppercase'
-    }
+        textTransform: 'uppercase',
+        fontWeight: 'bold'
+    },
+    icon: {}
 });
