@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#1E6738',
         borderRadius: 10,
         borderWidth: 1,
-        borderColor: '#fff'
+        borderColor: '#BDDDFF'
     },
     startBtnText: {
         color: '#fff',
