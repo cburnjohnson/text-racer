@@ -28,7 +28,12 @@ const ResultsModal = () => {
                         <Text style={styles.modalTextHeader}>Results</Text>
                         <View style={styles.modalInfo}>
                             <View>
-                                <Text style={{ textAlign: 'center' }}>
+                                <Text
+                                    style={{
+                                        textAlign: 'center',
+                                        fontWeight: 'bold'
+                                    }}
+                                >
                                     Time
                                 </Text>
                                 <Text
@@ -39,7 +44,14 @@ const ResultsModal = () => {
                                 >
                                     {counter} Seconds
                                 </Text>
-                                <Text style={{ textAlign: 'center' }}>WPM</Text>
+                                <Text
+                                    style={{
+                                        textAlign: 'center',
+                                        fontWeight: 'bold'
+                                    }}
+                                >
+                                    WPM
+                                </Text>
                                 <Text
                                     style={{
                                         marginBottom: 20,
@@ -95,7 +107,7 @@ const styles = StyleSheet.create({
     },
     resetBtn: {
         textAlign: 'center',
-        backgroundColor: '#F194FF',
+        backgroundColor: '#1E6738',
         borderRadius: 20,
         padding: 12,
         elevation: 2

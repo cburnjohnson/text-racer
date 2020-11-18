@@ -42,8 +42,7 @@ const GameState = (props) => {
     const calculateWpm = () => {
         let textLength = state.text.split('').length;
         let wpm = textLength / 5 / (state.counter / 60);
-        console.log(wpm);
-        setWpm(wpm);
+        setWpm(Math.round(wpm));
     };
 
     const startGame = () => {
