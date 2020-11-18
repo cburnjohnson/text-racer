@@ -6,11 +6,11 @@ export default function HomeScreen({ navigation }) {
         <View style={styles.container}>
             <View style={styles.homeFlex}>
                 <Text style={styles.headerText}>
-                    Text Racer
-                    <Image
+                    Text Racer {''} 
+                    {/* <Image
                         style={styles.icon}
                         source={require('../assets/images/traffic-light-icon.png')}
-                    />
+                    /> */}
                 </Text>
 
                 <TouchableOpacity
@@ -37,7 +37,9 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around'
     },
     headerText: {
-        fontSize: 60
+        fontSize: 50,
+        textTransform: 'uppercase',
+        fontWeight: 'bold'
     },
     startBtn: {
         paddingTop: 15,
