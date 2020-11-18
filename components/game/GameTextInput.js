@@ -62,7 +62,8 @@ const styles = StyleSheet.create({
         width: 300,
         padding: 10,
         borderRadius: 10,
-        marginTop: 10
+        marginTop: 10,
+        backgroundColor: '#fff'
     },
     textInputMatch: {
         height: 40,
@@ -71,7 +72,8 @@ const styles = StyleSheet.create({
         width: 300,
         padding: 10,
         borderRadius: 10,
-        marginTop: 10
+        marginTop: 10,
+        backgroundColor: '#fff'
     },
     textInputNoMatch: {
         height: 40,
@@ -80,6 +82,7 @@ const styles = StyleSheet.create({
         width: 300,
         padding: 10,
         borderRadius: 10,
-        marginTop: 10
+        marginTop: 10,
+        backgroundColor: '#fff'
     }
 });
